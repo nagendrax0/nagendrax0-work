@@ -27,7 +27,7 @@
       --surface: #111111;
       --border: #1e1e1e;
       --text: #e8e8e8;
-      --muted: #666;
+      --muted: #555;
       --font: 'Inter', system-ui, -apple-system, sans-serif;
     }
 
@@ -58,12 +58,7 @@
       margin-bottom: 80px;
     }
 
-    .logo {
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
-
+    .logo { font-size: 14px; font-weight: 500; letter-spacing: -0.01em; }
     .logo span { color: var(--muted); }
 
     nav a {
@@ -71,58 +66,52 @@
       color: var(--muted);
       transition: color 0.15s;
     }
-
     nav a:hover { color: var(--text); }
 
     /* Intro */
-    .intro { margin-bottom: 64px; }
+    .intro { margin-bottom: 72px; }
 
     .intro h1 {
       font-size: 20px;
       font-weight: 500;
       letter-spacing: -0.02em;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .intro p {
       font-size: 15px;
       color: var(--muted);
-      max-width: 480px;
     }
 
-    /* Work list */
-    .section-label {
+    /* Groups */
+    .groups { display: flex; flex-direction: column; gap: 56px; }
+
+    .group-label {
       font-size: 11px;
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
-    .work-list {
-      list-style: none;
-      margin-bottom: 64px;
-    }
+    /* Work list */
+    .work-list { list-style: none; }
 
     .work-item a {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 0;
+      padding: 15px 0;
       border-bottom: 1px solid var(--border);
       gap: 16px;
       transition: opacity 0.15s;
     }
 
-    .work-item a:hover { opacity: 0.6; }
+    .work-item a:hover { opacity: 0.55; }
     .work-item a:hover .arrow { transform: translate(3px, -3px); }
 
-    .work-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
+    .work-meta { display: flex; flex-direction: column; gap: 3px; }
 
     .work-name {
       font-size: 15px;
@@ -130,25 +119,39 @@
       letter-spacing: -0.01em;
     }
 
-    .work-desc {
-      font-size: 13px;
-      color: var(--muted);
-    }
+    .work-desc { font-size: 13px; color: var(--muted); }
 
     .work-right {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       flex-shrink: 0;
     }
 
-    .work-tag {
+    .badge {
       font-size: 11px;
-      color: var(--muted);
-      background: var(--surface);
-      border: 1px solid var(--border);
       padding: 3px 8px;
       border-radius: 4px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .badge.live {
+      color: #4ade80;
+      border-color: rgba(74, 222, 128, 0.2);
+      background: rgba(74, 222, 128, 0.06);
+    }
+
+    .badge.wip {
+      color: #fb923c;
+      border-color: rgba(251, 146, 60, 0.2);
+      background: rgba(251, 146, 60, 0.06);
+    }
+
+    .badge.archived {
+      color: var(--muted);
     }
 
     .arrow {
@@ -157,7 +160,7 @@
       transition: transform 0.15s;
     }
 
-    /* Hover preview */
+    /* Cursor preview */
     .preview {
       position: fixed;
       pointer-events: none;
@@ -181,7 +184,6 @@
       box-shadow: 0 24px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
     }
 
-    /* Tiny browser chrome */
     .preview-chrome {
       display: flex;
       align-items: center;
@@ -195,7 +197,6 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #333;
     }
 
     .preview-chrome span:nth-child(1) { background: #ff5f57; }
@@ -210,33 +211,17 @@
       object-position: top;
     }
 
-    .preview-img-placeholder {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      background: #1a1a1a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      color: #444;
-    }
-
     /* Footer */
     footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-top: 80px;
     }
 
-    footer p {
-      font-size: 13px;
-      color: var(--muted);
-    }
+    footer p { font-size: 13px; color: var(--muted); }
 
-    .social-links {
-      display: flex;
-      gap: 20px;
-    }
+    .social-links { display: flex; gap: 20px; }
 
     .social-links a {
       font-size: 13px;
@@ -249,7 +234,7 @@
     @media (max-width: 480px) {
       .container { padding: 48px 0 80px; }
       header { margin-bottom: 48px; }
-      .work-tag { display: none; }
+      .badge:not(.live):not(.wip) { display: none; }
       footer { flex-direction: column; gap: 16px; align-items: flex-start; }
       .preview { display: none; }
     }
@@ -257,7 +242,6 @@
 </head>
 <body>
 
-  <!-- Cursor preview -->
   <div class="preview" id="preview">
     <div class="preview-inner">
       <div class="preview-chrome">
@@ -268,35 +252,17 @@
   </div>
 
   <div class="container">
-
     <header>
       <div class="logo">nagendrax0 <span>/ work</span></div>
-      <nav>
-        <a href="https://nagendrax0.com" target="_blank">main site ↗</a>
-      </nav>
+      <nav><a href="https://nagendrax0.com" target="_blank">main site ↗</a></nav>
     </header>
 
     <section class="intro">
       <h1>Directory</h1>
-      <p>Things I'm building or working on — for fun, for clients, or just because. Links to everything.</p>
+      <p>Things I'm building or working on — for fun, for clients, or just because.</p>
     </section>
 
-    <div class="section-label">Everything</div>
-    <ul class="work-list">
-      <!-- Each work-item: add data-preview="./images/project-name.png" to <li> for hover image -->
-      <li class="work-item" data-preview="./images/nagendrax0.png">
-        <a href="https://nagendrax0.com" target="_blank">
-          <div class="work-meta">
-            <span class="work-name">nagendrax0.com</span>
-            <span class="work-desc">Portfolio — B2B SaaS design & development</span>
-          </div>
-          <div class="work-right">
-            <span class="work-tag">Portfolio</span>
-            <span class="arrow">↗</span>
-          </div>
-        </a>
-      </li>
-    </ul>
+    <div class="groups" id="groups"></div>
 
     <footer>
       <p>Nagendra Shekhawat — Bangalore</p>
@@ -305,53 +271,110 @@
         <a href="https://nagendrax0.com" target="_blank">Website</a>
       </div>
     </footer>
-
   </div>
 
   <script>
+    const GROUP_ORDER = ['website', 'web-app', 'app', 'fun'];
+    const GROUP_LABELS = {
+      'website':  'Websites',
+      'web-app':  'Web Apps',
+      'app':      'Apps',
+      'fun':      'Fun',
+    };
+
     const preview = document.getElementById('preview');
     const previewImg = document.getElementById('preview-img');
-    const offset = { x: 20, y: -20 };
-
-    let mouseX = 0, mouseY = 0;
 
     document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
-      const pw = preview.offsetWidth;
-      const ph = preview.offsetHeight;
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-
-      let x = mouseX + offset.x;
-      let y = mouseY + offset.y;
-
-      if (x + pw > vw - 16) x = mouseX - pw - offset.x;
+      const pw = preview.offsetWidth, ph = preview.offsetHeight;
+      const vw = window.innerWidth, vh = window.innerHeight;
+      let x = e.clientX + 20, y = e.clientY - 20;
+      if (x + pw > vw - 16) x = e.clientX - pw - 20;
       if (y + ph > vh - 16) y = vh - ph - 16;
       if (y < 16) y = 16;
-
       preview.style.left = x + 'px';
       preview.style.top = y + 'px';
     });
 
-    document.querySelectorAll('.work-item[data-preview]').forEach(item => {
-      const src = item.dataset.preview;
+    function showPreview(src) {
+      if (!src) return;
+      previewImg.src = src;
+      preview.classList.add('visible');
+    }
 
-      item.addEventListener('mouseenter', () => {
-        if (src) {
-          previewImg.src = src;
-          previewImg.style.display = 'block';
-        } else {
-          previewImg.style.display = 'none';
+    function hidePreview() {
+      preview.classList.remove('visible');
+    }
+
+    function statusLabel(status) {
+      const map = { live: 'Live', wip: 'WIP', archived: 'Archived' };
+      return map[status] || status;
+    }
+
+    function renderGroups(projects) {
+      const grouped = {};
+      for (const p of projects) {
+        if (!grouped[p.type]) grouped[p.type] = [];
+        grouped[p.type].push(p);
+      }
+
+      // Sort within each group by updatedAt descending
+      for (const type in grouped) {
+        grouped[type].sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
+      }
+
+      const container = document.getElementById('groups');
+
+      for (const type of GROUP_ORDER) {
+        if (!grouped[type]?.length) continue;
+
+        const section = document.createElement('div');
+        section.className = 'group';
+
+        const label = document.createElement('div');
+        label.className = 'group-label';
+        label.textContent = GROUP_LABELS[type] || type;
+        section.appendChild(label);
+
+        const ul = document.createElement('ul');
+        ul.className = 'work-list';
+
+        for (const p of grouped[type]) {
+          const li = document.createElement('li');
+          li.className = 'work-item';
+          if (p.image) {
+            li.addEventListener('mouseenter', () => showPreview(p.image));
+            li.addEventListener('mouseleave', hidePreview);
+          }
+
+          li.innerHTML = `
+            <a href="${p.url}" target="_blank" rel="noopener">
+              <div class="work-meta">
+                <span class="work-name">${p.name}</span>
+                ${p.description ? `<span class="work-desc">${p.description}</span>` : ''}
+              </div>
+              <div class="work-right">
+                ${p.version ? `<span class="badge">v${p.version}</span>` : ''}
+                <span class="badge ${p.status}">${statusLabel(p.status)}</span>
+                <span class="arrow">↗</span>
+              </div>
+            </a>`;
+
+          ul.appendChild(li);
         }
-        preview.classList.add('visible');
-      });
 
-      item.addEventListener('mouseleave', () => {
-        preview.classList.remove('visible');
+        section.appendChild(ul);
+        container.appendChild(section);
+      }
+    }
+
+    fetch('./projects.json')
+      .then(r => r.json())
+      .then(renderGroups)
+      .catch(() => {
+        document.getElementById('groups').innerHTML =
+          '<p style="color:#555;font-size:14px">No projects yet.</p>';
       });
-    });
   </script>
 </body>
 </html>
