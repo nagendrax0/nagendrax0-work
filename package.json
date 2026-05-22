@@ -20,5 +20,9 @@
   "homepage": "https://github.com/nagendrax0/nagendrax0-work#readme",
   "devDependencies": {
     "puppeteer": "^25.0.4"
+  },
+  "config": {
+    "puppeteer_skip_chromium_download": "true",
+    "PUPPETEER_SKIP_DOWNLOAD": "true"
   }
 }
