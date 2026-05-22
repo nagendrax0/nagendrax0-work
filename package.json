@@ -1,0 +1,24 @@
+{
+  "name": "nagendrax0-work",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nagendrax0/nagendrax0-work.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nagendrax0/nagendrax0-work/issues"
+  },
+  "homepage": "https://github.com/nagendrax0/nagendrax0-work#readme",
+  "devDependencies": {
+    "puppeteer": "^25.0.4"
+  }
+}
