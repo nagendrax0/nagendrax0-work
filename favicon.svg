@@ -1,0 +1,35 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" fill="#000"/>
+  <!-- x0 logo centered, scaled ~1.18x, offset to center in 64x64 -->
+  <g transform="translate(7, 19.5) scale(1.22)">
+    <!-- X mark -->
+    <rect y="0.778778" width="4.01733" height="4.52581" fill="white"/>
+    <rect x="4.01758" y="5.3047" width="4.01733" height="4.52581" fill="white"/>
+    <rect x="8.03516" y="9.83057" width="4.01733" height="4.52581" fill="white"/>
+    <rect x="12.0508" y="14.3562" width="4.01733" height="4.52581" fill="white"/>
+    <rect x="16.0693" y="18.8821" width="4.01733" height="4.52581" fill="white"/>
+    <rect y="18.8821" width="4.01733" height="4.52581" fill="white"/>
+    <rect x="4.01758" y="14.3562" width="4.01733" height="4.52581" fill="white"/>
+    <rect x="12.0508" y="5.30467" width="4.01733" height="4.52581" fill="white"/>
+    <rect x="16.0693" y="0.778778" width="4.01733" height="4.52581" fill="white"/>
+    <!-- 0 mark -->
+    <rect x="25.877" y="2.01575" width="3.57823" height="4.03113" fill="white"/>
+    <rect x="38.4004" y="22.1713" width="3.57823" height="4.03113" transform="rotate(180 38.4004 22.1713)" fill="white"/>
+    <rect x="24.0869" y="4.0312" width="3.57823" height="16.1245" fill="white"/>
+    <rect x="34.8223" y="2.01575" width="3.57823" height="4.03113" fill="white"/>
+    <rect x="29.4541" y="22.1713" width="3.57823" height="4.03113" transform="rotate(180 29.4541 22.1713)" fill="white"/>
+    <rect x="36.6113" y="4.0312" width="3.57823" height="16.1245" fill="white"/>
+    <rect x="29.4541" width="5.36734" height="4.03113" fill="white"/>
+    <rect x="34.8223" y="24.1868" width="5.36734" height="4.03113" transform="rotate(180 34.8223 24.1868)" fill="white"/>
+    <rect x="33.0322" y="6.04672" width="1.78911" height="2.01556" fill="white"/>
+    <rect x="34.8223" y="6.04672" width="1.78911" height="2.01556" fill="white"/>
+    <rect x="33.0322" y="8.06218" width="1.78911" height="2.01556" fill="white"/>
+    <rect x="31.2441" y="8.43188" width="1.78911" height="2.01556" fill="white"/>
+    <rect x="31.2441" y="10.0779" width="1.78911" height="2.01556" fill="white"/>
+    <rect x="29.4541" y="12.0934" width="1.78911" height="2.01556" fill="white"/>
+    <rect x="29.4541" y="14.1089" width="1.78911" height="2.01556" fill="white"/>
+    <rect x="29.4541" y="16.1246" width="1.78911" height="2.01556" fill="white"/>
+    <rect x="27.665" y="16.1246" width="1.78911" height="2.01556" fill="white"/>
+    <rect x="31.2441" y="12.0934" width="1.78911" height="2.01556" fill="white"/>
+  </g>
+</svg>
