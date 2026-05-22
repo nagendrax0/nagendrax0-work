@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Work — Nagendra Shekhawat</title>
-  <meta name="description" content="Selected work by Nagendra Shekhawat — B2B SaaS Designer & Developer.">
+  <meta name="description" content="Things Nagendra Shekhawat is building or working on.">
   <meta name="author" content="Nagendra Shekhawat">
 
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
@@ -13,11 +13,11 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://work.nagendrax0.com/">
   <meta property="og:title" content="Work — Nagendra Shekhawat">
-  <meta property="og:description" content="Selected work by Nagendra Shekhawat — B2B SaaS Designer & Developer.">
+  <meta property="og:description" content="Things Nagendra Shekhawat is building or working on.">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Work — Nagendra Shekhawat">
-  <meta name="twitter:description" content="Selected work by Nagendra Shekhawat.">
+  <meta name="twitter:description" content="Things Nagendra Shekhawat is building or working on.">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,7 +28,6 @@
       --border: #1e1e1e;
       --text: #e8e8e8;
       --muted: #666;
-      --accent: #e8e8e8;
       --font: 'Inter', system-ui, -apple-system, sans-serif;
     }
 
@@ -63,7 +62,6 @@
       font-size: 14px;
       font-weight: 500;
       letter-spacing: -0.01em;
-      color: var(--text);
     }
 
     .logo span { color: var(--muted); }
@@ -77,9 +75,7 @@
     nav a:hover { color: var(--text); }
 
     /* Intro */
-    .intro {
-      margin-bottom: 64px;
-    }
+    .intro { margin-bottom: 64px; }
 
     .intro h1 {
       font-size: 20px;
@@ -106,9 +102,6 @@
 
     .work-list {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
       margin-bottom: 64px;
     }
 
@@ -118,12 +111,11 @@
       align-items: center;
       padding: 16px 0;
       border-bottom: 1px solid var(--border);
-      transition: opacity 0.15s;
       gap: 16px;
+      transition: opacity 0.15s;
     }
 
-    .work-item a:hover { opacity: 0.7; }
-
+    .work-item a:hover { opacity: 0.6; }
     .work-item a:hover .arrow { transform: translate(3px, -3px); }
 
     .work-meta {
@@ -165,6 +157,70 @@
       transition: transform 0.15s;
     }
 
+    /* Hover preview */
+    .preview {
+      position: fixed;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0;
+      transform: scale(0.94) translateY(6px);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      width: 260px;
+    }
+
+    .preview.visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+
+    .preview-inner {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+    }
+
+    /* Tiny browser chrome */
+    .preview-chrome {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 10px;
+      border-bottom: 1px solid #222;
+      background: #111;
+    }
+
+    .preview-chrome span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #333;
+    }
+
+    .preview-chrome span:nth-child(1) { background: #ff5f57; }
+    .preview-chrome span:nth-child(2) { background: #febc2e; }
+    .preview-chrome span:nth-child(3) { background: #28c840; }
+
+    .preview-img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .preview-img-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: #444;
+    }
+
     /* Footer */
     footer {
       display: flex;
@@ -195,10 +251,22 @@
       header { margin-bottom: 48px; }
       .work-tag { display: none; }
       footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .preview { display: none; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Cursor preview -->
+  <div class="preview" id="preview">
+    <div class="preview-inner">
+      <div class="preview-chrome">
+        <span></span><span></span><span></span>
+      </div>
+      <img class="preview-img" id="preview-img" src="" alt="" />
+    </div>
+  </div>
+
   <div class="container">
 
     <header>
@@ -215,8 +283,8 @@
 
     <div class="section-label">Everything</div>
     <ul class="work-list">
-      <!-- Add your work items here -->
-      <li class="work-item">
+      <!-- Each work-item: add data-preview="./images/project-name.png" to <li> for hover image -->
+      <li class="work-item" data-preview="">
         <a href="#" target="_blank">
           <div class="work-meta">
             <span class="work-name">Project Name</span>
@@ -239,5 +307,51 @@
     </footer>
 
   </div>
+
+  <script>
+    const preview = document.getElementById('preview');
+    const previewImg = document.getElementById('preview-img');
+    const offset = { x: 20, y: -20 };
+
+    let mouseX = 0, mouseY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      const pw = preview.offsetWidth;
+      const ph = preview.offsetHeight;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      let x = mouseX + offset.x;
+      let y = mouseY + offset.y;
+
+      if (x + pw > vw - 16) x = mouseX - pw - offset.x;
+      if (y + ph > vh - 16) y = vh - ph - 16;
+      if (y < 16) y = 16;
+
+      preview.style.left = x + 'px';
+      preview.style.top = y + 'px';
+    });
+
+    document.querySelectorAll('.work-item[data-preview]').forEach(item => {
+      const src = item.dataset.preview;
+
+      item.addEventListener('mouseenter', () => {
+        if (src) {
+          previewImg.src = src;
+          previewImg.style.display = 'block';
+        } else {
+          previewImg.style.display = 'none';
+        }
+        preview.classList.add('visible');
+      });
+
+      item.addEventListener('mouseleave', () => {
+        preview.classList.remove('visible');
+      });
+    });
+  </script>
 </body>
 </html>
